@@ -1,8 +1,8 @@
 # Base
 
 # site
-title: Young Dou
-description: 砚生墨 - 香自满
+title: 墨香阁
+description: "砚生墨 - 香自满"
 
 # url
 # url of website. format like http://<domain>/<path> or https://<domain>
@@ -15,7 +15,7 @@ theme:
 # pagination
 # post count per page. set 0 to disable it
 # default is 10
-per_page: 16
+per_page: 10
 
 # menu
 # navigation menus of website
@@ -25,8 +25,8 @@ menu:
 
 # default category name
 # default is "uncategorized"
-default_category:
-  "其他"
+default_category: "Other"
+
 
 # content
 # GitHub user/repository
@@ -65,7 +65,7 @@ timezone: Asia/Shanghai
 # language
 # language of website, theme support is needed
 # default is default
-language: zh-cn
+language: en
 
 # code line numbers
 # whether showing line numbers in code block
@@ -75,7 +75,7 @@ line_numbers:
 # order
 # post ordering, order posts by issues create_time(created) or update_time(updated)
 # default is created
-order: updated
+order:
 
 # directory
 # subdirectory in public_dir
