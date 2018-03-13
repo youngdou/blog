@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="A Node.js static website framework. Powered by GitHub." />
+<link rel="stylesheet" href="/css/style.css" />
+
+<title>
+Docker查看层数【docker history】 | AcyOrt
+</title>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="center">
+    <h1>
+      <a href="/">AcyOrt</a>
+    </h1>
+    <p>A Node.js static website framework. Powered by GitHub.</p>
+    <div class="menu">
+    
+      <a href="/categories/">categories</a>
+    
+      <a href="/tags/">tags</a>
+    
+    </div>
+  </div>
+</div>
+
+
+
+<div id="post" class="center">
+  <h1>Docker查看层数【docker history】</h1>
+  <p>
+    <a href="https://github.com/youngdou">youngdou</a>
+    Posted at
+    October 24, 2017
+    . - <a href="/categories/0/">uncategorized</a>
+  </p>
+
+  <div class="content">
+      <div class="hljs">
+        <table>
+          <tbody>
+            <tr>
+              <td class="line">
+                <pre><span>1</span>
+<span>2</span>
+<span>3</span>
+<span>4</span>
+<span>5</span>
+<span>6</span>
+<span>7</span>
+<span>8</span>
+</pre>
+              </td>
+              <td class="code"><pre>root@YOUNG:&#x2F;home&#x2F;young&#x2F;桌面&#x2F;DockerWebApp&#x2F;Test# docker history ubuntu
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+747cb2d60bbe        13 days ago         &#x2F;bin&#x2F;sh -c #(nop)  CMD [&quot;&#x2F;bin&#x2F;bash&quot;]            0 B                 
+&lt;missing&gt;           13 days ago         &#x2F;bin&#x2F;sh -c mkdir -p &#x2F;run&#x2F;systemd &amp;&amp; echo &#39;doc   7 B                 
+&lt;missing&gt;           13 days ago         &#x2F;bin&#x2F;sh -c sed -i &#39;s&#x2F;^#\s*\(deb.*universe\)$&#x2F;   2.759 kB            
+&lt;missing&gt;           13 days ago         &#x2F;bin&#x2F;sh -c rm -rf &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;*          0 B                 
+&lt;missing&gt;           13 days ago         &#x2F;bin&#x2F;sh -c set -xe   &amp;&amp; echo &#39;#!&#x2F;bin&#x2F;sh&#39; &gt; &#x2F;u   745 B               
+&lt;missing&gt;           13 days ago         &#x2F;bin&#x2F;sh -c #(nop) ADD file:5b334adf9d9a2256ad   122 MB   </pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <p>Dockerfile</p>
+
+      <div class="hljs">
+        <table>
+          <tbody>
+            <tr>
+              <td class="line">
+                <pre><span>1</span>
+<span>2</span>
+</pre>
+              </td>
+              <td class="code"><pre>FROM ubuntu
+RUN echo &quot;hello  world&quot;</pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    
+      <div class="hljs">
+        <table>
+          <tbody>
+            <tr>
+              <td class="line">
+                <pre><span>1</span>
+<span>2</span>
+<span>3</span>
+<span>4</span>
+<span>5</span>
+<span>6</span>
+<span>7</span>
+<span>8</span>
+<span>9</span>
+</pre>
+              </td>
+              <td class="code"><pre>root@YOUNG:&#x2F;home&#x2F;young&#x2F;桌面&#x2F;DockerWebApp&#x2F;Test# docker history ubuntu:v1
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+a0a8e4bc79c4        29 seconds ago      &#x2F;bin&#x2F;sh -c echo &quot;hello  world&quot;                  0 B                 
+747cb2d60bbe        13 days ago         &#x2F;bin&#x2F;sh -c #(nop)  CMD [&quot;&#x2F;bin&#x2F;bash&quot;]            0 B                 
+&lt;missing&gt;           13 days ago         &#x2F;bin&#x2F;sh -c mkdir -p &#x2F;run&#x2F;systemd &amp;&amp; echo &#39;doc   7 B                 
+&lt;missing&gt;           13 days ago         &#x2F;bin&#x2F;sh -c sed -i &#39;s&#x2F;^#\s*\(deb.*universe\)$&#x2F;   2.759 kB            
+&lt;missing&gt;           13 days ago         &#x2F;bin&#x2F;sh -c rm -rf &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;*          0 B                 
+&lt;missing&gt;           13 days ago         &#x2F;bin&#x2F;sh -c set -xe   &amp;&amp; echo &#39;#!&#x2F;bin&#x2F;sh&#39; &gt; &#x2F;u   745 B               
+&lt;missing&gt;           13 days ago         &#x2F;bin&#x2F;sh -c #(nop) ADD file:5b334adf9d9a2256ad   122 MB </pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  
+  <div class="label">
+    
+    <div><a href="/tags/683037205/">#Docker</a></div>
+    
+  </div>
+  
+
+  <div class="relate">
+    
+    
+    <a rel="prev" href="/posts/268041558.html">← Dockfile问题总结</a>
+    
+
+    
+    
+    <a rel="next" href="/posts/266127269.html">LTE网络相关概念 →</a>
+    
+  </div>
+</div>
+
+
+<div class="footer">
+  <div class="center">
+    &copy; 2018 AcyOrt .
+    <a target="_blank" href="https://github.com/acyortjs/acyort">Powered by Github | AcyOrt</a> .
+    
+    <a target="_blank" href="https://github.com/youngdou/notes/issues">Source</a>
+    
+    <sup>5</sup>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>

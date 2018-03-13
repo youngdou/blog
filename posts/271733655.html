@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="A Node.js static website framework. Powered by GitHub." />
+<link rel="stylesheet" href="/css/style.css" />
+
+<title>
+k8s基本命令 | AcyOrt
+</title>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="center">
+    <h1>
+      <a href="/">AcyOrt</a>
+    </h1>
+    <p>A Node.js static website framework. Powered by GitHub.</p>
+    <div class="menu">
+    
+      <a href="/categories/">categories</a>
+    
+      <a href="/tags/">tags</a>
+    
+    </div>
+  </div>
+</div>
+
+
+
+<div id="post" class="center">
+  <h1>k8s基本命令</h1>
+  <p>
+    <a href="https://github.com/youngdou">youngdou</a>
+    Posted at
+    November 07, 2017
+    . - <a href="/categories/0/">uncategorized</a>
+  </p>
+
+  <div class="content"><h1 id="kubectl">kubectl</h1><ul>
+<li>create 是创建资源的</li><li>apply 是应用配置的
+他们后面都可以使用 -f 输入yaml/json配置文件
+详情见下面
+<code>`</code>
+Apply a configuration to a resource by filename or stdin. This resource will be created if it doesn&#39;t exist yet. To use
+&#39;apply&#39;, always create the resource initially with either &#39;apply&#39; or &#39;create --save-config&#39;. </li></ul>
+<p>JSON and YAML formats are accepted. </p>
+<p>Alpha Disclaimer: the --prune functionality is not yet complete. Do not use unless you are aware of what the current
+state is. See <a href="https://issues.k8s.io/34274">https://issues.k8s.io/34274</a>.</p>
+<p>Examples:</p>
+<h1 id="applytheconfigurationinpodjsontoapod">Apply the configuration in pod.json to a pod.</h1><p>  kubectl apply -f ./pod.json</p>
+<h1 id="applythejsonpassedintostdintoapod">Apply the JSON passed into stdin to a pod.</h1><p>  cat pod.json | kubectl apply -f -</p>
+<h1 id="notepruneisstillinalpha">Note: --prune is still in Alpha</h1><h1 id="applytheconfigurationinmanifestyamlthatmatcheslabelappnginxanddeletealltheotherresourcesthatare">Apply the configuration in manifest.yaml that matches label app=nginx and delete all the other resources that are</h1><p>not in the file and match label app=nginx.
+  kubectl apply --prune -f manifest.yaml -l app=nginx</p>
+<h1 id="applytheconfigurationinmanifestyamlanddeletealltheotherconfigmapsthatarenotinthefile">Apply the configuration in manifest.yaml and delete all the other configmaps that are not in the file.</h1><p>  kubectl apply --prune -f manifest.yaml --all --prune-whitelist=core/v1/ConfigMap</p>
+
+      <div class="hljs">
+        <table>
+          <tbody>
+            <tr>
+              <td class="line">
+                <pre><span>1</span>
+</pre>
+              </td>
+              <td class="code"><pre></pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <p>Create a resource by filename or stdin. </p>
+<p>JSON and YAML formats are accepted.</p>
+<p>Examples:</p>
+<h1 id="createapodusingthedatainpodjson">Create a pod using the data in pod.json.</h1><p>  kubectl create -f ./pod.json</p>
+<h1 id="createapodbasedonthejsonpassedintostdin">Create a pod based on the JSON passed into stdin.</h1><p>  cat pod.json | kubectl create -f -</p>
+<h1 id="editthedataindockerregistryyamlinjsonusingthev1apiformatthencreatetheresourceusingtheedited">Edit the data in docker-registry.yaml in JSON using the v1 API format then create the resource using the edited</h1><p>data.
+  kubectl create -f docker-registry.yaml --edit --output-version=v1 -o json</p>
+<p>Available Commands:
+  configmap      Create a configmap from a local file, directory or literal value
+  deployment     Create a deployment with the specified name.
+  namespace      Create a namespace with the specified name
+  quota          Create a quota with the specified name.
+  secret         Create a secret using specified subcommand
+  service        Create a service using specified subcommand.
+  serviceaccount Create a service account with the specified name</p>
+<p><code>`</code></p>
+</div>
+
+  
+  <div class="label">
+    
+    <div><a href="/tags/740964858/">#Kubernetes</a></div>
+    
+  </div>
+  
+
+  <div class="relate">
+    
+    
+    <a rel="prev" href="/posts/271826145.html">← 待验证的实验</a>
+    
+
+    
+    
+    <a rel="next" href="/posts/271728663.html">k8s入门踩坑 →</a>
+    
+  </div>
+</div>
+
+
+<div class="footer">
+  <div class="center">
+    &copy; 2018 AcyOrt .
+    <a target="_blank" href="https://github.com/acyortjs/acyort">Powered by Github | AcyOrt</a> .
+    
+    <a target="_blank" href="https://github.com/youngdou/notes/issues">Source</a>
+    
+    <sup>6</sup>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="A Node.js static website framework. Powered by GitHub." />
+<link rel="stylesheet" href="/css/style.css" />
+
+<title>
+k8s入门踩坑 | AcyOrt
+</title>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="center">
+    <h1>
+      <a href="/">AcyOrt</a>
+    </h1>
+    <p>A Node.js static website framework. Powered by GitHub.</p>
+    <div class="menu">
+    
+      <a href="/categories/">categories</a>
+    
+      <a href="/tags/">tags</a>
+    
+    </div>
+  </div>
+</div>
+
+
+
+<div id="post" class="center">
+  <h1>k8s入门踩坑</h1>
+  <p>
+    <a href="https://github.com/youngdou">youngdou</a>
+    Posted at
+    November 07, 2017
+    . - <a href="/categories/0/">uncategorized</a>
+  </p>
+
+  <div class="content"><ul>
+<li>kubernetes创建yaml，pod服务一直处于ContainerCreating状态的原因查找与解决
+<a href="https://m.2cto.com/net/201709/683171.html">https://m.2cto.com/net/201709/683171.html</a>
+看到registry.access.redhat.com/rhel7/pod-infrastructure:latest感觉很奇怪，我设置的仓库是grc.io，为什么去拉取这个镜像，怀疑是不是什么没有安装好。尝试运行docker pull registry.access.redhat.com/rhel7/pod-infrastructure:latest，提示redhat-ca.crt: no such file or directory。ls查看改文件是个软连接，链接目标是/etc/rhsm，查看没有rhsm，尝试安装yum install <em>rhsm</em>，出现相关软件，感觉比较符合，所以安装查看产生了/etc/rhsm文件夹。</li></ul>
+<ul>
+<li>no API token found for service account default/default, retry after the token is automatically created and added to the service account
+<a href="https://github.com/kubernetes/kubernetes/issues/33714">https://github.com/kubernetes/kubernetes/issues/33714</a>
+systemd/system/k..service引用了apiserver文件
+注释 /etc/kubernetes/apiserver file 中的一行(主要是去掉其中SERVICEACCOUNT)
+#KUBE_ADMISSION_CONTROL=&quot;
+然后 
+      <div class="hljs">
+        <table>
+          <tbody>
+            <tr>
+              <td class="line">
+                <pre><span>1</span>
+<span>2</span>
+</pre>
+              </td>
+              <td class="code"><pre>systemctl daemon-reload
+systemctl restart kube-apiserver</pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </li></ul>
+</div>
+
+  
+  <div class="label">
+    
+    <div><a href="/tags/740964858/">#Kubernetes</a></div>
+    
+  </div>
+  
+
+  <div class="relate">
+    
+    
+    <a rel="prev" href="/posts/271733655.html">← k8s基本命令</a>
+    
+
+    
+    
+    <a rel="next" href="/posts/271255074.html">安装k8s过程 →</a>
+    
+  </div>
+</div>
+
+
+<div class="footer">
+  <div class="center">
+    &copy; 2018 AcyOrt .
+    <a target="_blank" href="https://github.com/acyortjs/acyort">Powered by Github | AcyOrt</a> .
+    
+    <a target="_blank" href="https://github.com/youngdou/notes/issues">Source</a>
+    
+    <sup>5</sup>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>

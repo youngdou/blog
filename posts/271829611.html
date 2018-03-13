@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="A Node.js static website framework. Powered by GitHub." />
+<link rel="stylesheet" href="/css/style.css" />
+
+<title>
+《k8s权威指南》笔记 | AcyOrt
+</title>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="center">
+    <h1>
+      <a href="/">AcyOrt</a>
+    </h1>
+    <p>A Node.js static website framework. Powered by GitHub.</p>
+    <div class="menu">
+    
+      <a href="/categories/">categories</a>
+    
+      <a href="/tags/">tags</a>
+    
+    </div>
+  </div>
+</div>
+
+
+
+<div id="post" class="center">
+  <h1>《k8s权威指南》笔记</h1>
+  <p>
+    <a href="https://github.com/youngdou">youngdou</a>
+    Posted at
+    November 07, 2017
+    . - <a href="/categories/0/">uncategorized</a>
+  </p>
+
+  <div class="content"><p>pod 的重启策略与控制方式息息相关，当前可用于管理pod的控制器包括 ReplicationController、Job、DaemonSet，及之际人<strong>通过 kublete 管理（静态 Pod）</strong>。要求如下：</p>
+<ul>
+<li>RC 和 DaemonSet: 必须是 Always</li><li>Job: OnFailure 或者 Never</li><li>kubelet: 在pod失效的时候重启，不管 RestartPolicy是啥，也不会对 pod 进行健康检查 </li></ul>
+</div>
+
+  
+  <div class="label">
+    
+    <div><a href="/tags/740964858/">#Kubernetes</a></div>
+    
+  </div>
+  
+
+  <div class="relate">
+    
+    
+    <a rel="prev" href="/posts/284945461.html">← Nginx阅读思考笔记</a>
+    
+
+    
+    
+    <a rel="next" href="/posts/271826145.html">待验证的实验 →</a>
+    
+  </div>
+</div>
+
+
+<div class="footer">
+  <div class="center">
+    &copy; 2018 AcyOrt .
+    <a target="_blank" href="https://github.com/acyortjs/acyort">Powered by Github | AcyOrt</a> .
+    
+    <a target="_blank" href="https://github.com/youngdou/notes/issues">Source</a>
+    
+    <sup>3</sup>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>

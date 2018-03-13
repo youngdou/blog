@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="A Node.js static website framework. Powered by GitHub." />
+<link rel="stylesheet" href="/css/style.css" />
+
+<title>
+Nginx阅读思考笔记 | AcyOrt
+</title>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="center">
+    <h1>
+      <a href="/">AcyOrt</a>
+    </h1>
+    <p>A Node.js static website framework. Powered by GitHub.</p>
+    <div class="menu">
+    
+      <a href="/categories/">categories</a>
+    
+      <a href="/tags/">tags</a>
+    
+    </div>
+  </div>
+</div>
+
+
+
+<div id="post" class="center">
+  <h1>Nginx阅读思考笔记</h1>
+  <p>
+    <a href="https://github.com/youngdou">youngdou</a>
+    Posted at
+    December 29, 2017
+    . - <a href="/categories/0/">uncategorized</a>
+  </p>
+
+  <div class="content"><h1 id="nginx初探">Nginx初探</h1><p>http反向代理功能中针对http有后端情况判断的特性，如果对其他扩展的协议呢？毕竟是</p>
+
+      <div class="hljs">
+        <table>
+          <tbody>
+            <tr>
+              <td class="line">
+                <pre><span>1</span>
+</pre>
+              </td>
+              <td class="code"><pre>即将前端请求转向另一后端的IP</pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <h1 id="nginx配置和部署">Nginx 配置和部署</h1><ul>
+<li>配置超时时间
+keepalive_timeout timeout [header-timeout]
+中，timeout和header-timeout大小关系，是否一般 timeout &gt;= header-timeout</li></ul>
+<h1 id="nginx架构">Nginx 架构</h1><ul>
+<li>同步异步/阻塞非阻塞
+同步异步是主要对发送方（调用者）来说的
+阻塞非阻塞是对接收方来说的</li></ul>
+<h1 id="nginx代理和反向代理">Nginx代理和反向代理</h1><p>弄清楚<code>URL</code>和<code>URI</code>的区别</p>
+</div>
+
+  
+  <div class="label">
+    
+    <div><a href="/tags/789925773/">#Nginx</a></div>
+    
+  </div>
+  
+
+  <div class="relate">
+    
+    
+    <a rel="prev" href="/posts/284946543.html">← 关于毕业论文的一些思考</a>
+    
+
+    
+    
+    <a rel="next" href="/posts/271829611.html">《k8s权威指南》笔记 →</a>
+    
+  </div>
+</div>
+
+
+<div class="footer">
+  <div class="center">
+    &copy; 2018 AcyOrt .
+    <a target="_blank" href="https://github.com/acyortjs/acyort">Powered by Github | AcyOrt</a> .
+    
+    <a target="_blank" href="https://github.com/youngdou/notes/issues">Source</a>
+    
+    <sup>3</sup>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>

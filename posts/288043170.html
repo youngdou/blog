@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="A Node.js static website framework. Powered by GitHub." />
+<link rel="stylesheet" href="/css/style.css" />
+
+<title>
+虚拟机-KVM | AcyOrt
+</title>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="center">
+    <h1>
+      <a href="/">AcyOrt</a>
+    </h1>
+    <p>A Node.js static website framework. Powered by GitHub.</p>
+    <div class="menu">
+    
+      <a href="/categories/">categories</a>
+    
+      <a href="/tags/">tags</a>
+    
+    </div>
+  </div>
+</div>
+
+
+
+<div id="post" class="center">
+  <h1>虚拟机-KVM</h1>
+  <p>
+    <a href="https://github.com/youngdou">youngdou</a>
+    Posted at
+    January 12, 2018
+    . - <a href="/categories/0/">uncategorized</a>
+  </p>
+
+  <div class="content"><h1 id="kvm">kvm</h1><p>-
+ <a href="https://zh.wikipedia.org/wiki/%E5%9F%BA%E4%BA%8E%E5%86%85%E6%A0%B8%E7%9A%84%E8%99%9A%E6%8B%9F%E6%9C%BA">https://zh.wikipedia.org/wiki/%E5%9F%BA%E4%BA%8E%E5%86%85%E6%A0%B8%E7%9A%84%E8%99%9A%E6%8B%9F%E6%9C%BA</a></p>
+<ul>
+<li><a href="http://wiki.ubuntu.org.cn/Kvm%E6%95%99%E7%A8%8B#.E5.8F.8B.E6.83.85.E8.BF.9E.E6.8E.A5">http://wiki.ubuntu.org.cn/Kvm%E6%95%99%E7%A8%8B#.E5.8F.8B.E6.83.85.E8.BF.9E.E6.8E.A5</a></li></ul>
+<h1 id="hypervisor">hypervisor</h1><ul>
+<li><a href="https://zh.wikipedia.org/wiki/Hypervisor">https://zh.wikipedia.org/wiki/Hypervisor</a></li><li>需要注意的是 kvm 是 type 1 的虚拟机</li><li>paravirtualization (半虚拟化)</li></ul>
+<h1 id="openstackkvmqemulibvirt三者之间的关系">openstack-KVM-Qemu-Libvirt三者之间的关系</h1><ul>
+<li><a href="https://huangwei.me/wiki/tech_cloud_kvm_qemu_libvirt_openstack.html">https://huangwei.me/wiki/tech_cloud_kvm_qemu_libvirt_openstack.html</a></li><li><a href="http://blog.51cto.com/changfei/1672147">http://blog.51cto.com/changfei/1672147</a></li></ul>
+<h1 id="virtio和qemu的关系">virtio和qemu的关系</h1><ul>
+<li><a href="https://lingxiankong.github.io/2014-11-17-virtio-blk.html">https://lingxiankong.github.io/2014-11-17-virtio-blk.html</a><blockquote>
+<p>为解决全虚拟化在性能上的问题，半模拟技术应运而生。它构造了一种虚拟化环境所独有的存储设备，因此需要在虚拟机内部安装特定的驱动程序才能正常驱使该设备进行工作。通常我们称虚拟机内部的驱动为前端驱动，称负责实现其功能模拟的程序<strong>(KVM平台下即为qemu程序)为后端程序</strong>，半模拟技术也常常被叫做前后端技术。采用半摸拟技术后，配合前端驱动，虚拟化设备完全可以采用全新的事件通知和数据传递机制进而大幅提升性能，例如在virtio-blk磁盘中，采用io_event_fd进行前端到后端通知，采用中断注入方式实现后端到前端的通知，并通过IO环(vring)进行数据的共享。</p>
+</blockquote>
+</li></ul>
+<h1 id="集线器网桥交换机路由器网关大解析">集线器、网桥、交换机、路由器、网关大解析</h1><ul>
+<li><a href="https://www.tianmaying.com/tutorial/NetWorkInstrument">https://www.tianmaying.com/tutorial/NetWorkInstrument</a></li></ul>
+<h1 id="虚拟机三种网络模式">虚拟机三种网络模式</h1><ul>
+<li><a href="http://higoge.github.io/2015/06/24/vm02/">http://higoge.github.io/2015/06/24/vm02/</a></li></ul>
+<h2 id="桥接模式">桥接模式</h2><p><img src="https://user-images.githubusercontent.com/14830291/34902045-81f57b1e-f84e-11e7-88bd-3850e69950c9.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/14830291/34902015-04aa8514-f84e-11e7-9fdf-62c98e7e18e8.png" alt="桥接(Bridge)模式"></p>
+<h1 id="virtiovhost和vhostuser">virtio,vhost 和vhost-user</h1><ul>
+<li><a href="http://blog.csdn.net/qq_15437629/article/details/77899905">http://blog.csdn.net/qq_15437629/article/details/77899905</a></li></ul>
+<h1 id="tun/tap设备">TUN/TAP设备</h1><ul>
+<li><p><a href="https://www.jianshu.com/p/09f9375b7fa7">https://www.jianshu.com/p/09f9375b7fa7</a></p>
+</li><li><p>virtio tap 
+<a href="http://www.cnblogs.com/sammyliu/p/4543657.html">http://www.cnblogs.com/sammyliu/p/4543657.html</a>
+<img src="https://user-images.githubusercontent.com/14830291/34902127-1a2130b2-f850-11e7-8719-ddafbc554401.png" alt="image"></p>
+</li></ul>
+<p><img src="https://user-images.githubusercontent.com/14830291/34902134-34545d74-f850-11e7-9f1f-148ece00f23a.png" alt="image"></p>
+<h1 id="vhost和virtio">vhost 和 virtio</h1><p>使用virtio来做前后端驱动的半虚拟化，但 backend 不使用 qemu，而是使用 vhost，从而提高效率
+<img src="https://user-images.githubusercontent.com/14830291/34902180-3a7694dc-f851-11e7-91f8-f5f40e4ab5f4.png" alt="image"></p>
+<ul>
+<li><a href="http://blog.csdn.net/qq_15437629/article/details/77899905">http://blog.csdn.net/qq_15437629/article/details/77899905</a></li><li><a href="http://blog.csdn.net/flyforfreedom2008/article/details/46038853">http://blog.csdn.net/flyforfreedom2008/article/details/46038853</a></li></ul>
+</div>
+
+  
+  <div class="label">
+    
+    <div><a href="/tags/660159941/">#Linux</a></div>
+    
+    <div><a href="/tags/802611177/">#System</a></div>
+    
+  </div>
+  
+
+  <div class="relate">
+    
+    
+    <a rel="prev" href="/posts/289992852.html">← 性能测试</a>
+    
+
+    
+    
+    <a rel="next" href="/posts/287750104.html">微服务架构的学习思考 →</a>
+    
+  </div>
+</div>
+
+
+<div class="footer">
+  <div class="center">
+    &copy; 2018 AcyOrt .
+    <a target="_blank" href="https://github.com/acyortjs/acyort">Powered by Github | AcyOrt</a> .
+    
+    <a target="_blank" href="https://github.com/youngdou/notes/issues">Source</a>
+    
+    <sup> 0</sup>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>

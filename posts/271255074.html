@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="A Node.js static website framework. Powered by GitHub." />
+<link rel="stylesheet" href="/css/style.css" />
+
+<title>
+安装k8s过程 | AcyOrt
+</title>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="center">
+    <h1>
+      <a href="/">AcyOrt</a>
+    </h1>
+    <p>A Node.js static website framework. Powered by GitHub.</p>
+    <div class="menu">
+    
+      <a href="/categories/">categories</a>
+    
+      <a href="/tags/">tags</a>
+    
+    </div>
+  </div>
+</div>
+
+
+
+<div id="post" class="center">
+  <h1>安装k8s过程</h1>
+  <p>
+    <a href="https://github.com/youngdou">youngdou</a>
+    Posted at
+    November 05, 2017
+    . - <a href="/categories/0/">uncategorized</a>
+  </p>
+
+  <div class="content"><ul>
+<li><p>一篇全面的文章
+<a href="https://www.kubernetes.org.cn/2906.html">https://www.kubernetes.org.cn/2906.html</a></p>
+</li><li><p>更改yum源
+<a href="http://blog.csdn.net/skykingf/article/details/51953700">http://blog.csdn.net/skykingf/article/details/51953700</a></p>
+</li><li><p>设置代理服务器（科学上网）
+<a href="http://www.cnblogs.com/cocowool/archive/2012/07/05/2578487.html">http://www.cnblogs.com/cocowool/archive/2012/07/05/2578487.html</a></p>
+</li></ul>
+<p>两个都设置
+    -export http_proxy=<a href="http://192.168.241.1:1080">http://192.168.241.1:1080</a>
+    -export https_proxy=<a href="https://192.168.241.1:1080">https://192.168.241.1:1080</a></p>
+<ul>
+<li><p>docker 设置代理服务器（科学上网）
+<a href="https://docs.docker.com/engine/admin/systemd/#httphttps-proxy">https://docs.docker.com/engine/admin/systemd/#httphttps-proxy</a></p>
+<blockquote>
+<p>从这次教训来看，以后即使设置了系统的代理变量 http_proxy，也不意味着软件本身就使用了这个代理服务器</p>
+</blockquote>
+</li><li><p>swap
+<code>`</code>
+[root@localhost docker.service.d]# kubeadm init
+[kubeadm] WARNING: kubeadm is in beta, please do not use it for production clusters.
+[init] Using Kubernetes version: v1.8.2
+[init] Using Authorization modes: [Node RBAC]
+[preflight] Running pre-flight checks
+[preflight] WARNING: Running with swap on is not supported. Please disable swap or set kubelet&#39;s --fail-swap-on flag to false.
+[preflight] Some fatal errors occurred:
+  /proc/sys/net/bridge/bridge-nf-call-iptables contents are not set to 1
+[preflight] If you know what you are doing, you can skip pre-flight checks with <code>--skip-preflight-checks</code></p>
+</li></ul>
+
+      <div class="hljs">
+        <table>
+          <tbody>
+            <tr>
+              <td class="line">
+                <pre><span>1</span>
+<span>2</span>
+<span>3</span>
+<span>4</span>
+<span>5</span>
+<span>6</span>
+<span>7</span>
+</pre>
+              </td>
+              <td class="code"><pre>Kubernetes 1.8开始要求关闭系统的Swap，如果不关闭，默认配置下kubelet将无法启动。可以通过kubelet的启动参数–fail-swap-on&#x3D;false更改这个限制。 我们这里关闭系统的Swap:
+swapoff -a
+
+
+
+
+-安装完毕</pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <p>root@localhost docker.service.d]# kubeadm init
+[kubeadm] WARNING: kubeadm is in beta, please do not use it for production clusters.
+[init] Using Kubernetes version: v1.8.2
+[init] Using Authorization modes: [Node RBAC]
+[preflight] Running pre-flight checks
+[preflight] Starting the kubelet service
+[kubeadm] WARNING: starting in 1.8, tokens expire after 24 hours by default (if you require a non-expiring token use --token-ttl 0)
+[certificates] Generated ca certificate and key.
+[certificates] Generated apiserver certificate and key.
+[certificates] apiserver serving cert is signed for DNS names [localhost.localdomain kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local] and IPs [10.96.0.1 192.168.241.132]
+[certificates] Generated apiserver-kubelet-client certificate and key.
+[certificates] Generated sa key and public key.
+[certificates] Generated front-proxy-ca certificate and key.
+[certificates] Generated front-proxy-client certificate and key.
+[certificates] Valid certificates and keys now exist in &quot;/etc/kubernetes/pki&quot;
+[kubeconfig] Wrote KubeConfig file to disk: &quot;admin.conf&quot;
+[kubeconfig] Wrote KubeConfig file to disk: &quot;kubelet.conf&quot;
+[kubeconfig] Wrote KubeConfig file to disk: &quot;controller-manager.conf&quot;
+[kubeconfig] Wrote KubeConfig file to disk: &quot;scheduler.conf&quot;
+[controlplane] Wrote Static Pod manifest for component kube-apiserver to &quot;/etc/kubernetes/manifests/kube-apiserver.yaml&quot;
+[controlplane] Wrote Static Pod manifest for component kube-controller-manager to &quot;/etc/kubernetes/manifests/kube-controller-manager.yaml&quot;
+[controlplane] Wrote Static Pod manifest for component kube-scheduler to &quot;/etc/kubernetes/manifests/kube-scheduler.yaml&quot;
+[etcd] Wrote Static Pod manifest for a local etcd instance to &quot;/etc/kubernetes/manifests/etcd.yaml&quot;
+[init] Waiting for the kubelet to boot up the control plane as Static Pods from directory &quot;/etc/kubernetes/manifests&quot;
+[init] This often takes around a minute; or longer if the control plane images have to be pulled.
+[apiclient] All control plane components are healthy after 316.022206 seconds
+[uploadconfig] Storing the configuration used in ConfigMap &quot;kubeadm-config&quot; in the &quot;kube-system&quot; Namespace
+[markmaster] Will mark node localhost.localdomain as master by adding a label and a taint
+[markmaster] Master localhost.localdomain tainted and labelled with key/value: node-role.kubernetes.io/master=&quot;&quot;
+[bootstraptoken] Using token: 55692b.5aea8f0bac6524b4
+[bootstraptoken] Configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstraptoken] Configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstraptoken] Configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[bootstraptoken] Creating the &quot;cluster-info&quot; ConfigMap in the &quot;kube-public&quot; namespace
+[addons] Applied essential addon: kube-dns
+[addons] Applied essential addon: kube-proxy</p>
+<p>Your Kubernetes master has initialized successfully!</p>
+<p>To start using your cluster, you need to run (as a regular user):</p>
+<p>  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config</p>
+<p>You should now deploy a pod network to the cluster.
+Run &quot;kubectl apply -f [podnetwork].yaml&quot; with one of the options listed at:
+  <a href="http://kubernetes.io/docs/admin/addons/">http://kubernetes.io/docs/admin/addons/</a></p>
+<p>You can now join any number of machines by running the following on each node
+as root:</p>
+<p>  kubeadm join --token 55692b.5aea8f0bac6524b4 192.168.241.132:6443 --discovery-token-ca-cert-hash sha256:8b57be0e6385eeb3228487e62fa7efabf585b7ab306d1d8badfff3b4a4498563</p>
+
+      <div class="hljs">
+        <table>
+          <tbody>
+            <tr>
+              <td class="line">
+                <pre><span>1</span>
+</pre>
+              </td>
+              <td class="code"><pre>- 验证node出问题</pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <p>[root@localhost ~]# kubectl get all
+Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of &quot;crypto/rsa: verification error&quot; while trying to verify candidate authority certificate &quot;kubernetes&quot;)</p>
+
+      <div class="hljs">
+        <table>
+          <tbody>
+            <tr>
+              <td class="line">
+                <pre><span>1</span>
+<span>2</span>
+<span>3</span>
+</pre>
+              </td>
+              <td class="code"><pre>
+参考https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;kubernetes&#x2F;issues&#x2F;48378
+关键在这个哥们说的问题</pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <p>do you have $KUBECONFIG pointing to /etc/kubernetes/kubelet.conf?</p>
+<p>export KUBECONFIG=/etc/kubernetes/kubelet.conf
+kubectl get nodes</p>
+
+      <div class="hljs">
+        <table>
+          <tbody>
+            <tr>
+              <td class="line">
+                <pre><span>1</span>
+<span>2</span>
+<span>3</span>
+</pre>
+              </td>
+              <td class="code"><pre>
+
+- rbac继续踩坑</pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <p>Error from server (Forbidden): error when retrieving current configuration of:
+&amp;{0xc420db4780 0xc421014070  flannel kube-flannel.yml 0xc4207c0f50 0xc4207c0f50  false}
+from server for: &quot;kube-flannel.yml&quot;: clusterroles.rbac.authorization.k8s.io &quot;flannel&quot; is forbidden: User &quot;system:node:localhost.localdomain&quot; cannot get clusterroles.rbac.authorization.k8s.io at the cluster scope
+Error from server (Forbidden): error when retrieving current configuration of:
+&amp;{0xc420db4b40 0xc4210150a0  flannel kube-flannel.yml 0xc4207c1f10 0xc4207c1f10  false}
+from server for: &quot;kube-flannel.yml&quot;: clusterrolebindings.rbac.authorization.k8s.io &quot;flannel&quot; is forbidden: User &quot;system:node:localhost.localdomain&quot; cannot get clusterrolebindings.rbac.authorization.k8s.io at the cluster scope
+Error from server (Forbidden): error when retrieving current configuration of:
+&amp;{0xc420db4d80 0xc421015c00 kube-system flannel kube-flannel.yml 0xc420700400 0xc420700400  false}
+from server for: &quot;kube-flannel.yml&quot;: serviceaccounts &quot;flannel&quot; is forbidden: User &quot;system:node:localhost.localdomain&quot; cannot get serviceaccounts in the namespace &quot;kube-system&quot;
+Error from server (Forbidden): error when retrieving current configuration of:
+&amp;{0xc420db4fc0 0xc42105d110 kube-system kube-flannel-cfg kube-flannel.yml 0xc420701308 0xc420701308  false}
+from server for: &quot;kube-flannel.yml&quot;: configmaps &quot;kube-flannel-cfg&quot; is forbidden: User &quot;system:node:localhost.localdomain&quot; cannot get configmaps in the namespace &quot;kube-system&quot;: no path found to object
+Error from server (Forbidden): error when retrieving current configuration of:
+&amp;{0xc420db52c0 0xc42108d6c0 kube-system kube-flannel-ds kube-flannel.yml 0xc4208aa118 0xc4208aa118  false}
+from server for: &quot;kube-flannel.yml&quot;: daemonsets.extensions &quot;kube-flannel-ds&quot; is forbidden: User &quot;system:node:localhost.localdomain&quot; cannot get daemonsets.extensions in the namespace &quot;kube-system&quot;
+<code>`</code></p>
+<p><a href="https://kubernetes.io//docs/admin/authorization/rbac/#api-overview">https://kubernetes.io//docs/admin/authorization/rbac/#api-overview</a></p>
+<ul>
+<li>巨坑！
+master的cpu核数至少2个以上！修改以后瞬间init</li></ul>
+</div>
+
+  
+  <div class="label">
+    
+    <div><a href="/tags/740964858/">#Kubernetes</a></div>
+    
+  </div>
+  
+
+  <div class="relate">
+    
+    
+    <a rel="prev" href="/posts/271728663.html">← k8s入门踩坑</a>
+    
+
+    
+    
+    <a rel="next" href="/posts/270633777.html">虚拟机共享剪切板的方案 →</a>
+    
+  </div>
+</div>
+
+
+<div class="footer">
+  <div class="center">
+    &copy; 2018 AcyOrt .
+    <a target="_blank" href="https://github.com/acyortjs/acyort">Powered by Github | AcyOrt</a> .
+    
+    <a target="_blank" href="https://github.com/youngdou/notes/issues">Source</a>
+    
+    <sup>4</sup>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>

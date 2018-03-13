@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="A Node.js static website framework. Powered by GitHub." />
+<link rel="stylesheet" href="/css/style.css" />
+
+<title>
+Dockfile问题总结 | AcyOrt
+</title>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="center">
+    <h1>
+      <a href="/">AcyOrt</a>
+    </h1>
+    <p>A Node.js static website framework. Powered by GitHub.</p>
+    <div class="menu">
+    
+      <a href="/categories/">categories</a>
+    
+      <a href="/tags/">tags</a>
+    
+    </div>
+  </div>
+</div>
+
+
+
+<div id="post" class="center">
+  <h1>Dockfile问题总结</h1>
+  <p>
+    <a href="https://github.com/youngdou">youngdou</a>
+    Posted at
+    October 24, 2017
+    . - <a href="/categories/0/">uncategorized</a>
+  </p>
+
+  <div class="content"><h1 id="workdir">WORKDIR</h1><h2 id="问题">问题</h2><blockquote>
+<p>之前提到一些初学者常犯的错误是把 Dockerfile 等同于 Shell 脚本来书写,这种错误的理解还可能会导致出现下面这样的错误:</p>
+</blockquote>
+
+      <div class="hljs">
+        <table>
+          <tbody>
+            <tr>
+              <td class="line">
+                <pre><span>1</span>
+<span>2</span>
+</pre>
+              </td>
+              <td class="code"><pre>RUN cd &#x2F;app
+RUN echo &quot;hello&quot; &gt; world.txt</pre></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <blockquote>
+<p>如果将这个 Dockerfile 进行构建镜像运行后,会发现找不到 /app/world.txt 文件,或者其内容不是 hello 。原因其实很简单,在 Shell 中,连续两行是同一个进程执行环境,因此前一个命令修改的<strong>内存状态</strong>,会直接影响后一个命令;
+而在Dockerfile 中,这<strong>两行 RUN 命令的执行环境根本不同</strong>,是两个完全不同的容器。这就是对 Dokerfile 构建分层存储的概念不了解所导致的错误。</p>
+</blockquote>
+<p>== 其实就是两个进程（在此指的是容器）的内存不共享</p>
+<blockquote>
+<p>之前说过每一个 RUN 都是启动一个容器、执行命令、然后提交<strong>存储层文件变更</strong>。第一层 RUN cd /app 的执行仅仅是当前进程的工作目录变更,一个内存上的变化而已,其结果不会造成任何文件变更。而到第二层的时候,启动的是一个全新的容器,<em>跟第一层的容器更完全没关系</em>,自然不可能继承前一层构建过程中的内存变化。</p>
+</blockquote>
+<p>== 我觉得这里指的“跟第一层的容器更完全没关系”指的是内存没有关系，新建一个容器就是新建一个进程，两个进程之间的内存隔离的没有关系。。。但是前面RUN改变的存储层还是会影响到后面的RUN的容器的。</p>
+<h2 id="总结">总结</h2><p>其实搞清楚<strong>存储层变更</strong>和<strong>内存状态变更</strong>两个概念就能明白了。</p>
+<h1 id="一些注意点">一些注意点</h1><ul>
+<li>和 CMD , ENTRYPOINT 一样, HEALTHCHECK 只可以出现一次,如果写了多个,只有最后一个生效。</li></ul>
+</div>
+
+  
+  <div class="label">
+    
+    <div><a href="/tags/683037205/">#Docker</a></div>
+    
+  </div>
+  
+
+  <div class="relate">
+    
+    
+    <a rel="prev" href="/posts/269298643.html">← tomcat+mysql的Docker-Compose编排</a>
+    
+
+    
+    
+    <a rel="next" href="/posts/267996757.html">Docker查看层数【docker history】 →</a>
+    
+  </div>
+</div>
+
+
+<div class="footer">
+  <div class="center">
+    &copy; 2018 AcyOrt .
+    <a target="_blank" href="https://github.com/acyortjs/acyort">Powered by Github | AcyOrt</a> .
+    
+    <a target="_blank" href="https://github.com/youngdou/notes/issues">Source</a>
+    
+    <sup>2</sup>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="A Node.js static website framework. Powered by GitHub." />
+<link rel="stylesheet" href="/css/style.css" />
+
+<title>
+tomcat+mysql的Docker-Compose编排 | AcyOrt
+</title>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="center">
+    <h1>
+      <a href="/">AcyOrt</a>
+    </h1>
+    <p>A Node.js static website framework. Powered by GitHub.</p>
+    <div class="menu">
+    
+      <a href="/categories/">categories</a>
+    
+      <a href="/tags/">tags</a>
+    
+    </div>
+  </div>
+</div>
+
+
+
+<div id="post" class="center">
+  <h1>tomcat+mysql的Docker-Compose编排</h1>
+  <p>
+    <a href="https://github.com/youngdou">youngdou</a>
+    Posted at
+    October 28, 2017
+    . - <a href="/categories/0/">uncategorized</a>
+  </p>
+
+  <div class="content"><p>这次对活动plus进行服务化，各种遇到很多坑， 例如：</p>
+<ul>
+<li>容器连接问题：mysql不允许其他ip登录</li></ul>
+<h1 id="部署要点">部署要点</h1><h2 id="新机子部署">新机子部署</h2><ul>
+<li>机子安装docker环境</li><li>迁移原有的 mysql 数据库文件，<code>/var/lib/mysql</code>，可以先打包为tar</li><li>迁移原有的 imgBase 图片文件，<code>/home/imgBase</code>，可以先打包tar再传输</li><li>以上两项迁移后的文件路径要和原来的一样</li></ul>
+<h2 id="旧机子更新应用">旧机子更新应用</h2><ul>
+<li>将应用war包改名为 actplus.war</li><li>放在 Compose/tomcat里面</li><li>docker-compose up -d 启动（启动前 <code>docker-compose --rmi local</code>删除旧镜像）</li></ul>
+</div>
+
+  
+  <div class="label">
+    
+    <div><a href="/tags/683037205/">#Docker</a></div>
+    
+  </div>
+  
+
+  <div class="relate">
+    
+    
+    <a rel="prev" href="/posts/270633777.html">← 虚拟机共享剪切板的方案</a>
+    
+
+    
+    
+    <a rel="next" href="/posts/268041558.html">Dockfile问题总结 →</a>
+    
+  </div>
+</div>
+
+
+<div class="footer">
+  <div class="center">
+    &copy; 2018 AcyOrt .
+    <a target="_blank" href="https://github.com/acyortjs/acyort">Powered by Github | AcyOrt</a> .
+    
+    <a target="_blank" href="https://github.com/youngdou/notes/issues">Source</a>
+    
+    <sup>4</sup>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>
