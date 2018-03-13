@@ -65,7 +65,7 @@ timezone: Asia/Shanghai
 # language
 # language of website, theme support is needed
 # default is default
-language: zh-cn
+language: 
 
 # code line numbers
 # whether showing line numbers in code block
