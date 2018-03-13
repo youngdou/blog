@@ -1,12 +1,12 @@
 # Base
 
 # site
-title: AcyOrt
-description: A Node.js static website framework. Powered by GitHub.
+title: Young Dou
+description: 砚生墨 - 香自满
 
 # url
 # url of website. format like http://<domain>/<path> or https://<domain>
-url:
+url: https://yaoyongdou.top
 
 # theme
 # default is ccc45
@@ -15,7 +15,7 @@ theme:
 # pagination
 # post count per page. set 0 to disable it
 # default is 10
-per_page: 3
+per_page: 16
 
 # menu
 # navigation menus of website
@@ -26,6 +26,7 @@ menu:
 # default category name
 # default is "uncategorized"
 default_category:
+  "其他"
 
 # content
 # GitHub user/repository
@@ -53,18 +54,18 @@ public_dir: /
 # authors
 # Github usernames, users whose issues can be generated to post
 authors:
-#  - author0
+ - youngdou
 #  - author1
 
 # timezone
 # website timezone. use machine setting by default
 # example: "America/New_York", "Japan", "UTC", or "Asia/Shanghai"
-timezone:
+timezone: Asia/Shanghai
 
 # language
 # language of website, theme support is needed
 # default is default
-language:
+language: zh-cn
 
 # code line numbers
 # whether showing line numbers in code block
@@ -74,7 +75,7 @@ line_numbers:
 # order
 # post ordering, order posts by issues create_time(created) or update_time(updated)
 # default is created
-order:
+order: updated
 
 # directory
 # subdirectory in public_dir
