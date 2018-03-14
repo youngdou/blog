@@ -1,5 +1,5 @@
 Thumbs.db
 .DS_Store
 *.swp
-themes/
+# themes/
 _issues.json
