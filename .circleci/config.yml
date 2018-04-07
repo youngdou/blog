@@ -17,6 +17,8 @@ jobs:
       - run: cp config.bak.yml config.yml 
       - run: npm i # 可选，如果你需要安装 npm 插件
       - run: acyort build  
+      - run: ls -Rlh
+      - run: rm package-lock.json
       - run: git checkout .  
       - run: git checkout gh-pages # 静态文件存放分支
       - run: git reset --hard origin/gh-pages
